@@ -1,5 +1,6 @@
 ﻿using Entitybasic.Model;
 using Entitybasic.Repository;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 
 namespace Entitybasic.Service
@@ -11,39 +12,39 @@ namespace Entitybasic.Service
         {
             _context = context;
         }
-        public Task<string> CreateServiceAsync(ProgrammerDTO programer) 
+        public async Task<string> CreateServiceAsync(ProgrammerDTO programer) 
         {
             if (programer.Name.Trim() != "" && programer.programmLanguage.Trim() !=  "")
             {
-                return _context.CreateProgrammerAsync(programer);
+                return await _context.CreateProgrammerAsync(programer);
             }
-            return null;
+            return "";
         }
-        public Task<bool> DeleteServiceByIdAsync(int id)
+        public async Task<bool> DeleteServiceByIdAsync(int id)
         {
             if (id != null)
             {
-                return _context.DeleteProgrammerByIdAsync(id);
+                return await _context.DeleteProgrammerByIdAsync(id);
             }
-            return null;
+            return false;
         }
-        public Task<bool> UpdateServiceById(int id, ProgrammerDTO programer) 
+        public async Task<bool> UpdateServiceById(int id, ProgrammerDTO programer) 
         {
             if (id != null && programer.Name.Trim() != "" && programer.programmLanguage.Trim() == "") 
             {
-                return _context.UpdateProgrammerById(id, programer);
+                return await _context.UpdateProgrammerById(id, programer);
             }
-            return null;
+            return false;
         }
-        public Task<IEnumerable<Programmer>> GetAllServiceAsync() 
+        public async Task<IEnumerable<Programmer>> GetAllServiceAsync() 
         {
-             return _context.GetAllProgrammerAsync();
+             return await _context.GetAllProgrammerAsync();
         }
-        public Task<Programmer> GetServieceByIdAsync(int id) 
+        public async Task<Programmer> GetServieceByIdAsync(int id) 
         {
             if (id != null)
             {
-                return _context.GetProgrammerByIdAsync(id);
+                return  await _context.GetProgrammerByIdAsync(id);
             }
             return null;
         }
