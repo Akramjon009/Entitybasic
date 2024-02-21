@@ -6,8 +6,9 @@ namespace Entitybasic.Service
     {
         public Task<string> CreateServiceAsync(ProgrammerDTO programer);
         public Task<bool> DeleteServiceByIdAsync(int id);
-        public Task<bool> UpdateServiceById(int id, ProgrammerDTO programer);
+      
         public  Task<IEnumerable<Programmer>> GetAllServiceAsync();
         public Task<Programmer> GetServieceByIdAsync(int id);
+        public Task<bool> UpdateServiceByIdAsync(int id, ProgrammerDTO programer);
     }
 }

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Entitybasic.Service
 {
-    public  class ProgrammerService:IProgrammerService
+    public  class ProgrammerService: IProgrammerService
     {
         private readonly IProgrammerRepository _context;
         public ProgrammerService(IProgrammerRepository context)
@@ -28,14 +28,7 @@ namespace Entitybasic.Service
             }
             return false;
         }
-        public async Task<bool> UpdateServiceById(int id, ProgrammerDTO programer) 
-        {
-            if (id != null && programer.Name.Trim() != "" && programer.programmLanguage.Trim() == "") 
-            {
-                return await _context.UpdateProgrammerById(id, programer);
-            }
-            return false;
-        }
+       
         public async Task<IEnumerable<Programmer>> GetAllServiceAsync() 
         {
              return await _context.GetAllProgrammerAsync();
@@ -47,6 +40,15 @@ namespace Entitybasic.Service
                 return  await _context.GetProgrammerByIdAsync(id);
             }
             return null;
+        }
+
+        public async Task<bool> UpdateServiceByIdAsync(int id, ProgrammerDTO programer)
+        {
+            if (id != null && programer.Name.Trim() != "" && programer.programmLanguage.Trim() == "")
+            {
+                return await _context.UpdateProgrammerById(id, programer);
+            }
+            return false;
         }
     }
 }
