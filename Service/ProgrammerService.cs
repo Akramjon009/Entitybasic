@@ -44,7 +44,7 @@ namespace Entitybasic.Service
 
         public async Task<bool> UpdateServiceByIdAsync(int id, ProgrammerDTO programer)
         {
-            if (id != null && programer.Name.Trim() != "" && programer.programmLanguage.Trim() == "")
+            if (id != null && programer.Name.Trim() != "" && programer.programmLanguage.Trim() != "")
             {
                 return await _context.UpdateProgrammerById(id, programer);
             }
