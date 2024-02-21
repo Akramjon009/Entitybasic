@@ -13,19 +13,27 @@ namespace Entitybasic.Service
         }
         public Task<string> CreateServiceAsync(ProgrammerDTO programer) 
         {
-            if (programer.Name.Trim() == "" && programer.programmLanguage.Trim() ==  "")
+            if (programer.Name.Trim() != "" && programer.programmLanguage.Trim() !=  "")
             {
                 return _context.CreateProgrammerAsync(programer);
             }
             return null;
         }
-        public Task<bool> DeleteServiceByIdAsync(int id) 
+        public Task<bool> DeleteServiceByIdAsync(int id)
         {
-            return _context.DeleteProgrammerByIdAsync(id);
+            if (id != null)
+            {
+                return _context.DeleteProgrammerByIdAsync(id);
+            }
+            return null;
         }
         public Task<bool> UpdateServiceById(int id, ProgrammerDTO programer) 
         {
-            return _context.UpdateProgrammerById(id, programer);
+            if (id != null && programer.Name.Trim() != "" && programer.programmLanguage.Trim() == "") 
+            {
+                return _context.UpdateProgrammerById(id, programer);
+            }
+            return null;
         }
         public Task<IEnumerable<Programmer>> GetAllServiceAsync() 
         {
@@ -33,7 +41,11 @@ namespace Entitybasic.Service
         }
         public Task<Programmer> GetServieceByIdAsync(int id) 
         {
-            return _context.GetProgrammerByIdAsync(id);
+            if (id != null)
+            {
+                return _context.GetProgrammerByIdAsync(id);
+            }
+            return null;
         }
     }
 }
