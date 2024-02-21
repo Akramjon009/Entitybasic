@@ -1,0 +1,6 @@
+@Entitybasyq_HostAddress = http://localhost:5083
+
+GET {{Entitybasyq_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
