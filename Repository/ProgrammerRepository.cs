@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Entitybasic.Repository
 {
-    public class ProgrammerRepository
+    public class ProgrammerRepository : IProgrammerRepository
     {
         private readonly ApplicationDbContext _context;
         public ProgrammerRepository(ApplicationDbContext context)
