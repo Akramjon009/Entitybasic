@@ -25,6 +25,8 @@ namespace Entitybasic
 
             builder.Services.AddScoped<IProgrammerRepository, ProgrammerRepository>();
             builder.Services.AddScoped<IProgrammerService, ProgrammerService>();
+
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
